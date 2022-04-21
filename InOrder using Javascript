@@ -1,0 +1,41 @@
+//Inorder
+class Node { 
+    constructor(item) {
+       this.data = item;
+       this.left = this.right = null;
+   }
+}
+   var root;
+   function inorder()
+   {
+       if (root == null)
+           return;
+       var s = [];
+       var current = root;
+       while (current != null || s.length > 0)
+       {
+           while (current != null)
+           {   
+               s.push(current);
+               current = current.left;
+           }
+           current = s.pop();
+           console.log(current.data + " ");
+            current = current.right;
+       }
+   }
+       console.log("Here is inorder")
+       root = new Node(10);
+       root.left = new Node(20);
+       root.right = new Node(30);
+       root.left.left = new Node(40);
+       root.left.right = new Node(50);
+       inorder();
+//    Output--
+//    Here is inorder
+//    40 
+//    20
+//    50
+//    10
+//    30
+    
