@@ -1,0 +1,52 @@
+#Inorder Transverse
+class Node:
+    def __init__(self, data):
+        self.left = None
+        self.right = None
+        self.data = data
+
+    def Insert(self, data):
+        if self.data:
+            if data < self.data:
+                if self.left is None:
+                    self.left = Node(data)
+                else:
+                    self.left.Insert(data)
+            elif data > self.data:
+                if self.right is None:
+                    self.right = Node(data)
+                else:
+                    self.right.Insert(data)
+        else:
+            self.data = data
+    def PrintTree(self):
+        if self.left:
+            self.left.PrintTree()
+        print( self.data),
+        if self.right:
+            self.right.PrintTree()
+    def inorderTraversal(self, Root):
+        res = []
+        if Root:
+            res = self.inorderTraversal(Root.left)
+            res.append(Root.data)
+            res = res + self.inorderTraversal(Root.right)
+        return res
+Root = Node(27)
+Root.Insert(39)
+Root.Insert(21)
+Root.Insert(42)
+Root.Insert(14)
+Root.Insert(35)
+Root.Insert(10)
+Root.Insert(19)
+Root.Insert(31)
+Root.Insert(42)
+Root.Insert(29)
+Root.Insert(33)
+Root.Insert(52)
+print("Inorder Transverse:")
+print(Root.inorderTraversal(Root))
+#Output-
+#Inorder Transverse:
+#[10, 14, 19, 21, 27, 29, 31, 33, 35, 39, 42, 52]
